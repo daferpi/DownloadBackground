@@ -7,7 +7,6 @@ class ViewController: UIViewController {
     private var session: URLSession?
 
     @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var downloadedFiles: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
 
     override func viewDidLoad() {
@@ -59,13 +58,10 @@ extension ViewController: URLSessionDelegate, URLSessionDownloadDelegate {
                     didWriteData bytesWritten: Int64,
                     totalBytesWritten: Int64,
                     totalBytesExpectedToWrite: Int64) {
-        if downloadTask == self.backgroundTask {
+        DispatchQueue.main.async {
             let calculatedProgress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
-            DispatchQueue.main.async {
-                print(NSNumber(value: calculatedProgress))
-                self.progressLabel.text = "\(calculatedProgress)"
-                self.progressView.progress = Float(truncating: NSNumber(value: calculatedProgress))
-            }
+            self.progressLabel.text = "\(calculatedProgress)"
+            self.progressView.progress = calculatedProgress
         }
     }
 
