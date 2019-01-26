@@ -80,9 +80,7 @@
 				24B03FBE21FC5C3400DB874C /* AppDelegate.swift */,
 				24B03FC021FC5C3400DB874C /* ViewController.swift */,
 				24B03FC221FC5C3400DB874C /* Main.storyboard */,
-				24B03FC521FC5C3500DB874C /* Assets.xcassets */,
-				24B03FC721FC5C3500DB874C /* LaunchScreen.storyboard */,
-				24B03FCA21FC5C3500DB874C /* Info.plist */,
+				24B03FE221FC75AC00DB874C /* Supporting Files */,
 			);
 			path = DownloadBackground;
 			sourceTree = "<group>";
@@ -94,6 +92,16 @@
 				24B03FD521FC5C3500DB874C /* Info.plist */,
 			);
 			path = DownloadBackgroundTests;
+			sourceTree = "<group>";
+		};
+		24B03FE221FC75AC00DB874C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				24B03FC521FC5C3500DB874C /* Assets.xcassets */,
+				24B03FC721FC5C3500DB874C /* LaunchScreen.storyboard */,
+				24B03FCA21FC5C3500DB874C /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,7 +377,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4C34FT6ABU;
-				INFOPLIST_FILE = DownloadBackground/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DownloadBackground/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -387,7 +395,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4C34FT6ABU;
-				INFOPLIST_FILE = DownloadBackground/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DownloadBackground/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
