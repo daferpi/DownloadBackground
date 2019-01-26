@@ -5,6 +5,7 @@ class ViewController: UIViewController {
     private var backgroundTask: URLSessionDownloadTask?
     @IBOutlet weak var downloadedFiles: UILabel!
 
+    @IBOutlet weak var progressView: UIProgressView!
     private lazy var session: URLSession = {
         let config = URLSessionConfiguration.background(withIdentifier: "MySession")
         config.isDiscretionary = false
@@ -78,6 +79,7 @@ extension ViewController: URLSessionDelegate, URLSessionDownloadDelegate {
             let calculatedProgress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
             DispatchQueue.main.async {
                 print(NSNumber(value: calculatedProgress))
+                self.progressView.progress = Float(NSNumber(value: calculatedProgress))
             }
         }
     }

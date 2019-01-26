@@ -28,8 +28,11 @@
                                             <action selector="startDownload:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UBj-hv-69x"/>
                                         </connections>
                                     </button>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JyK-m7-ED3">
+                                        <rect key="frame" x="0.0" y="227" width="375" height="2"/>
+                                    </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJK-zE-nLf">
-                                        <rect key="frame" x="0.0" y="227" width="375" height="420"/>
+                                        <rect key="frame" x="0.0" y="426" width="375" height="221"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -48,6 +51,7 @@
                     </view>
                     <connections>
                         <outlet property="downloadedFiles" destination="TJK-zE-nLf" id="Mgy-hJ-7VN"/>
+                        <outlet property="progressView" destination="JyK-m7-ED3" id="yLl-Gz-47u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
