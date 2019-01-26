@@ -3,34 +3,28 @@ import UIKit
 class ViewController: UIViewController {
 
     private var resumeData: Data?
-    @IBOutlet weak var progressLabel: UILabel!
     private var backgroundTask: URLSessionDownloadTask?
-    @IBOutlet weak var downloadedFiles: UILabel!
+    private var session: URLSession?
 
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var downloadedFiles: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
-    private lazy var session: URLSession = {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initSession()
+    }
+
+    private func initSession() {
         let config = URLSessionConfiguration.background(withIdentifier: "MySession")
         config.isDiscretionary = false
         config.sessionSendsLaunchEvents = true
-        return URLSession(configuration: config, delegate: self, delegateQueue: nil)
-    }()
-
-    @IBAction func startDownload(_ sender: Any) {
-        if let data = self.resumeData {
-            backgroundTask = session.downloadTask(withResumeData: data)
-        } else {
-        let  url = URL(string: "https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4")!
-        backgroundTask = session.downloadTask(with: url)
-        }
-        backgroundTask?.resume()
-        print("backgroundTask.resume")
+        session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
-        session.getAllTasks { (_) in
-        }
     }
 
     func updateUI() {
@@ -42,6 +36,16 @@ class ViewController: UIViewController {
         let path = documentsURL?.path ?? ""
         let content = try? FileManager.default.contentsOfDirectory(atPath: path)
         downloadedFiles.text = content?.reduce("") { "\($0)\($1)" }
+    }
+
+    @IBAction func startDownload(_ sender: Any) {
+        if let data = self.resumeData {
+            backgroundTask = session?.downloadTask(withResumeData: data)
+        } else {
+            let  url = URL(string: "https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4")!
+            backgroundTask = session?.downloadTask(with: url)
+        }
+        backgroundTask?.resume()
     }
 }
 
