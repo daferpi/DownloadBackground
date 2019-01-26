@@ -22,6 +22,14 @@ class ViewController: UIViewController {
     }
 
     @IBAction func startDownload(_ sender: Any) {
+        if let backgroundTask = backgroundTask {
+            backgroundTask.resume()
+        } else {
+            resumeTask()
+        }
+    }
+
+    func resumeTask() {
         if let data = self.resumeData {
             backgroundTask = session?.downloadTask(withResumeData: data)
         } else {
